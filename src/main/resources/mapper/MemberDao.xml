@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.demo.model.dao.MemberDao">
+
+    <resultMap type="Member" id="member">
+        <id column="id" property="id"></id>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"></result>
+        <result column="real_name" property="realName"></result>
+        <result column="gender" property="gender"></result>
+        <result column="telephone" property="telephone"></result>
+        <result column="email" property="email"></result>
+        <result column="avatar" property="avatar"></result>
+        <result column="hiredate" property="hiredate"></result>
+        <result column="status" property="status"></result>
+    </resultMap>
+
+    <sql id="BASE_COLUMN">
+      id,user_name,password,real_name,gender,telephone,email,avatar,hiredate,status
+    </sql>
+
+    <select id="getMemberById" resultMap="member" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="BASE_COLUMN" />
+        FROM sys_member
+        WHERE id=#{id}
+    </select>
+    <select id="getMemberList" resultMap="member" >
+        SELECT
+        <include refid="BASE_COLUMN" />
+        FROM sys_member
+    </select>
+</mapper>
