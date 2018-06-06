@@ -2,8 +2,12 @@ package com.neo.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -16,12 +20,15 @@ import org.thymeleaf.context.Context;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MailServiceTest {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private MailService mailService;
     @Autowired
     private TemplateEngine templateEngine;
     @Test
+
     public void testSimpleMail() throws Exception {
+        logger.info("定时任务已启动---------------- ");
         mailService.sendSimpleMail("812634676@qq.com","test simple mail"," hello this is simple mail");
     }
     @Test
