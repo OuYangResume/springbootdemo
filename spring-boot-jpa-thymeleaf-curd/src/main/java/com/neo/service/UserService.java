@@ -1,5 +1,6 @@
 package com.neo.service;
 
+import com.github.pagehelper.PageInfo;
 import com.neo.entity.User;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface UserService {
 
     public void delete(long id);
 
+    PageInfo<User> getUser(int pageNum, int pageSize);
 }

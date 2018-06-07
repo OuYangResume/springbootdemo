@@ -1,6 +1,9 @@
 package com.neo.repository;
 
+import com.neo.entity.User;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Author :Administrator
@@ -10,4 +13,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
     void delete(long id);
+    /**
+     * 分页查询数据
+     * @return
+     */
+    List<User> findByPage();
 }

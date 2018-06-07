@@ -21,9 +21,14 @@ public class HelloController {
         model.addAttribute("name", name);
         return "hello";
     }
-    @RequestMapping(value = "/getlist")
-    public String getlist(){
+    @RequestMapping(value = "/getAllList")
+    public String getAllList(){
         List<User> users=userService.getUserList();
+        return JSON.toJSONString(users);
+    }
+    @RequestMapping(value = "/getList")
+    public String getlist(int pageNum,int pageSize){
+        Object users=userService.getUser(pageNum,pageSize);
         return JSON.toJSONString(users);
     }
 }
