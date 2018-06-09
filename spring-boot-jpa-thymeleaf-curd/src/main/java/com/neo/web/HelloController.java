@@ -26,9 +26,38 @@ public class HelloController {
         List<User> users=userService.getUserList();
         return JSON.toJSONString(users);
     }
+    /**
+     * 获取用户信息
+     * @param pageNum 当前页
+     * @param pageSize 当前页面展示数目
+     */
     @RequestMapping(value = "/getList")
     public String getlist(int pageNum,int pageSize){
         Object users=userService.getUser(pageNum,pageSize);
         return JSON.toJSONString(users);
+    }
+    /**
+     * 修改用户信息
+     * @param user userObject
+     */
+    @RequestMapping(value = "/updateUser")
+    public void updateUser(User user) {
+        userService.edit(user);
+    }
+    /**
+     * 删除用户信息
+     * @param id 用户的id
+     */
+    @RequestMapping(value = "/deleteUser")
+    public void deleteUser(long id) {
+        userService.delete(id);
+    }
+    /**
+     * 添加用户信息
+     * @param user userObject
+     */
+    @RequestMapping(value = "/addUser")
+    public void createUser(User user) {
+        userService.save(user);
     }
 }
