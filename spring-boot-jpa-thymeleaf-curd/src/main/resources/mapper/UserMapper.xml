@@ -19,4 +19,14 @@
         <include refid="Base_Column_List" />
         from user
     </select>
+
+    <update id="updeteUser" parameterType="com.neo.entity.User">
+        UPDATE user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName !=null">user_name=#{userName},</if>
+            <if test="password !=null">password =#{password},</if>
+            <if test="age !=null">age =#{age}</if>
+        </trim>
+        WHERE id=#{id}
+    </update>
 </mapper>

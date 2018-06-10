@@ -12,10 +12,12 @@ import java.util.List;
  */
 @Repository
 public interface UserMapper {
+
     void delete(long id);
     /**
      * 分页查询数据
      * @return
      */
     List<User> findByPage();
+    void updeteUser(User user);
 }

@@ -8,12 +8,12 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 
 @SpringBootApplication
-@MapperScan("com.neo.repository")
-public class JpaThymeleafApplication extends SpringBootServletInitializer {
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(JpaThymeleafApplication.class);
-    }
+//@MapperScan("com.neo.repository")
+public class JpaThymeleafApplication {
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//        return application.sources(JpaThymeleafApplication.class);
+//    }
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(JpaThymeleafApplication.class, args);

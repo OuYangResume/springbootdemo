@@ -18,4 +18,8 @@ public interface UserService {
     public void delete(long id);
 
     PageInfo<User> getUser(int pageNum, int pageSize);
+
+    void deleteUser(long id);
+
+    void updateUser(User user);
 }

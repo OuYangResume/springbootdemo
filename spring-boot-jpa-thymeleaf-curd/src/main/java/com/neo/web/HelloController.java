@@ -42,7 +42,7 @@ public class HelloController {
      */
     @RequestMapping(value = "/updateUser")
     public void updateUser(User user) {
-        userService.edit(user);
+        userService.updateUser(user);
     }
     /**
      * 删除用户信息
@@ -50,7 +50,7 @@ public class HelloController {
      */
     @RequestMapping(value = "/deleteUser")
     public void deleteUser(long id) {
-        userService.delete(id);
+        userService.deleteUser(id);
     }
     /**
      * 添加用户信息
