@@ -2,6 +2,7 @@ package com.neo.web;
 
 import com.neo.entity.User;
 import com.neo.service.UserService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class UserController {
     }
 
     @RequestMapping("/list")
+
     public String list(Model model) {
         List<User> users=userService.getUserList();
         model.addAttribute("users", users);

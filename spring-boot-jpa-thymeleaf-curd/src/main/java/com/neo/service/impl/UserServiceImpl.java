@@ -3,10 +3,11 @@ package com.neo.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neo.entity.User;
-import com.neo.repository.UserMapper;
-import com.neo.repository.UserRepository;
+import com.neo.mapper.user.UserMapper;
+import com.neo.mapper.user.UserRepository;
 import com.neo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

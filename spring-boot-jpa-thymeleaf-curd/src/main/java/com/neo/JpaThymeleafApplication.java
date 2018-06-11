@@ -5,17 +5,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
 
 
 @SpringBootApplication
-//@MapperScan("com.neo.repository")
+@EnableCaching
 public class JpaThymeleafApplication {
-//    @Override
-//    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-//        return application.sources(JpaThymeleafApplication.class);
-//    }
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SpringApplication.run(JpaThymeleafApplication.class, args);
     }
 }

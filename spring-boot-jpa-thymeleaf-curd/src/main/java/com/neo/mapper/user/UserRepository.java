@@ -1,4 +1,4 @@
-package com.neo.repository;
+package com.neo.mapper.user;
 
 import com.neo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
