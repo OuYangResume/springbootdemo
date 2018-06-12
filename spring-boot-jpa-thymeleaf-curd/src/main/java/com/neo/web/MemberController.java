@@ -21,9 +21,9 @@ import java.util.List;
 public class MemberController {
     @Resource
     MemberService memberService;
-    @RequestMapping(value = "/getOne")
-    public String getOne(){
-        List<Member> member=memberService.findById();
+    @RequestMapping(value = "/getAll")
+    public String getAll(){
+        List<Member> member=memberService.findAll();
         return  JSON.toJSONString(member);
     }
 }

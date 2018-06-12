@@ -1,13 +1,17 @@
 package com.neo.web;
 
+import com.neo.entity.ExcelData;
 import com.neo.entity.User;
 import com.neo.service.UserService;
+import com.neo.utils.ExcelUtils;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.alibaba.fastjson.JSON;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -59,5 +63,36 @@ public class HelloController {
     @RequestMapping(value = "/addUser")
     public void createUser(User user) {
         userService.save(user);
+    }
+
+
+    @RequestMapping(value = "excel/test")
+   public void test(HttpServletResponse response){
+        int rowIndex =0;
+        List<User> list=userService.getUserList();
+        ExcelData data =new ExcelData();
+        data.setName("hello");
+        List<String> titles =new ArrayList<>();
+        titles.add("ID");
+        titles.add("userName");
+        titles.add("password");
+        titles.add("age");
+        data.setTitles(titles);
+        List<List<Object>> rows=new ArrayList<>();
+        for (int i = 0;i<list.size();i++){
+            User user=list.get(i);
+            List<Object> row=new ArrayList<>();
+            row.add(user.getId());
+            row.add(user.getUserName());
+            row.add(user.getPassword());
+            row.add(user.getAge());
+            rows.add(row);
+        }
+        data.setRows(rows);
+        try {
+            ExcelUtils.exportExcel(response,"test",data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

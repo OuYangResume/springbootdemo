@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService {
     private MemberMapper memberMapper;
 
     @Override
-    public List<Member> findById() {
+    public List<Member> findAll() {
         return memberMapper.findAll();
     }
 }
