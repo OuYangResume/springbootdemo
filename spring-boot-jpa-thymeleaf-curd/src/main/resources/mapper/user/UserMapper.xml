@@ -14,7 +14,7 @@
         DELETE FROM  user  WHERE id=#{id}
     </delete>
 
-    <select id="findByPage" resultMap="BaseResultMap">
+    <select id="findAlluser" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from user
@@ -29,4 +29,25 @@
         </trim>
         WHERE id=#{id}
     </update>
+
+    <select id="selectUserList" parameterType="com.neo.entity.User" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM user
+        WHERE 1=1
+        <if test="userName !=null and userName !=''">
+        AND user_name LIKE '%${userName}%'
+        </if>
+        <if test="pageNo !=null">
+            ORDER BY age limit #{pageNo},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getUserCount" parameterType="com.neo.entity.User" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM  user
+        WHERE 1=1
+        <if test="userName !=null and userName !=''">
+            AND user_name LIKE '%${userName}%'
+        </if>
+    </select>
 </mapper>

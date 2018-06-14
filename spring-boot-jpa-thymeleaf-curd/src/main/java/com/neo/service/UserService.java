@@ -22,4 +22,8 @@ public interface UserService {
     void deleteUser(long id);
 
     void updateUser(User user);
+
+    List<User> selectUserList(String userName,Integer page,Integer rows);
+
+    int getUserCount(String userName);
 }

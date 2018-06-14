@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -58,7 +60,7 @@ public class UserServiceImpl implements UserService{
     public PageInfo<User> getUser(int pageNum, int pageSize) {
         //使用分页插件,核心代码就这一行
         PageHelper.startPage(pageNum, pageSize);
-        List<User> userList=userMapper.findByPage();
+        List<User> userList=userMapper.findAlluser();
         PageInfo result =new PageInfo(userList);
         return result;
     }
@@ -77,6 +79,38 @@ public class UserServiceImpl implements UserService{
     @Override
     public void updateUser(User user) {
         userMapper.updeteUser(user);
+    }
+    /**
+     *条件查询user信息
+     * @param page 当前页
+     * @param rows 当前页面展示数目
+     * @param userName 用户名称
+     */
+    @Override
+    public List<User> selectUserList(String userName, Integer page, Integer rows) {
+        Integer pageNo=null;
+        Integer pageSize =null;
+        try{
+            if(page !=null){
+                if (rows !=null){
+                    pageSize =rows;
+                    pageNo =(page-1)*pageSize;
+                }
+            }
+            if (userName !=null && userName.equals("")!=true){
+                userName = URLDecoder.decode(userName,"UTF-8");
+            }
+            return userMapper.selectUserList(pageNo,pageSize,userName);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return new ArrayList<User>();
+        }
+    }
+
+    @Override
+    public int getUserCount(String userName) {
+        return userMapper.getUserCount(userName);
     }
 }
 
