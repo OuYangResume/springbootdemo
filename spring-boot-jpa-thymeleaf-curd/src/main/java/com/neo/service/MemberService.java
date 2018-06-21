@@ -11,4 +11,10 @@ import java.util.List;
  */
 public interface MemberService {
     List<Member> findAll();
+
+    int save(Member member);
+
+    List<Member> getMemberList(String userName, Integer page, Integer rows);
+
+    int getMemberCount(String userName);
 }

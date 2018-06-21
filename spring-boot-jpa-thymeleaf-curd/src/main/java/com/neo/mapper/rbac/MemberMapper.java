@@ -1,6 +1,7 @@
 package com.neo.mapper.rbac;
 
 import com.neo.entity.Member;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,4 +12,10 @@ import java.util.List;
  */
 public interface MemberMapper {
     List<Member> findAll();
+
+    int save(Member member);
+
+    Member findByUserName(String userName);
+
+    List<Member> getMemberList(@Param("pageNo")Integer pageNo,@Param("pageSize") Integer pageSize, @Param("userName") String userName);
 }

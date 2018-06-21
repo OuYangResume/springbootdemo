@@ -6,7 +6,7 @@
         <result column="password" property="password" jdbcType="VARCHAR" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="avatar" property="avatar" jdbcType="VARCHAR" />
-        <result column="status" property="userName" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
         <result column="email" property="email" jdbcType="VARCHAR" />
         <result column="gender" property="gender" />
         <result column="hiredate" property="hiredate" jdbcType="VARCHAR"/>
@@ -22,6 +22,81 @@
         <include refid="Base_Column_List" />
         from sys_member
     </select>
-
-
+    <insert id="save" parameterType="com.neo.entity.Member">
+      INSERT INTO sys_member
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="password != null" >
+                password,
+            </if>
+            <if test="userName != null" >
+                user_name,
+            </if>
+            <if test="avatar != null" >
+                avatar,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="email != null" >
+                email,
+            </if>
+            <if test="gender != null" >
+                gender,
+            </if>
+            <if test="hiredate != null" >
+                hiredate,
+            </if>
+            <if test="realName != null" >
+                real_name,
+            </if>
+            <if test="telephone != null" >
+                telephone,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="password != null" >
+                #{password},
+            </if>
+            <if test="userName != null" >
+                #{userName},
+            </if>
+            <if test="avatar != null" >
+                #{avatar},
+            </if>
+            <if test="status != null" >
+                #{status},
+            </if>
+            <if test="email != null" >
+                #{email},
+            </if>
+            <if test="gender != null" >
+                #{gender},
+            </if>
+            <if test="hiredate != null" >
+                #{hiredate},
+            </if>
+            <if test="realName != null" >
+                #{realName},
+            </if>
+            <if test="telephone != null" >
+                #{telephone},
+            </if>
+        </trim>
+    </insert>
+    <select id="findByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM sys_member WHERE user_name=#{userName}
+    </select>
+    
+    <select id="getMemberList" parameterType="com.neo.entity.Member" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM sys_member WHERE 1=1
+        <if test="userName !=null and userName !=''">
+            AND user_name LIKE '%${userName}%'
+        </if>
+        <if test="pageNo !=null">
+           limit #{pageNo},#{pageSize}
+        </if>
+    </select>
 </mapper>
