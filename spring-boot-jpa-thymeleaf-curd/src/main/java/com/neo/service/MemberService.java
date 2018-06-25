@@ -16,5 +16,5 @@ public interface MemberService {
 
     List<Member> getMemberList(String userName, Integer page, Integer rows);
 
-    int getMemberCount(String userName);
+    int  getMemberCount(String userName);
 }

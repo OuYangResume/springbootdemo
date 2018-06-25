@@ -53,6 +53,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public int getMemberCount(String userName) {
-        return 0;
+        return memberMapper.getMemberCount(userName);
     }
 }

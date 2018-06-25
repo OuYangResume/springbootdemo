@@ -18,4 +18,6 @@ public interface MemberMapper {
     Member findByUserName(String userName);
 
     List<Member> getMemberList(@Param("pageNo")Integer pageNo,@Param("pageSize") Integer pageSize, @Param("userName") String userName);
+
+    int getMemberCount( @Param("userName")String userName);
 }

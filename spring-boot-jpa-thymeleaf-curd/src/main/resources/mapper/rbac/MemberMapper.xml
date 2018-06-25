@@ -99,4 +99,12 @@
            limit #{pageNo},#{pageSize}
         </if>
     </select>
+
+
+    <select id="getMemberCount" parameterType="com.neo.entity.Member" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM sys_member WHERE 1=1
+        <if test="userName !=null and userName !=''">
+            AND user_name LIKE '%${userName}%'
+        </if>
+    </select>
 </mapper>

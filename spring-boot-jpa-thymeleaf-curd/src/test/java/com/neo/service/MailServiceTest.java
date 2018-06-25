@@ -19,6 +19,7 @@ import org.thymeleaf.context.Context;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@EnableScheduling
 public class MailServiceTest {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
@@ -26,12 +27,12 @@ public class MailServiceTest {
     @Autowired
     private TemplateEngine templateEngine;
     @Test
-
     public void testSimpleMail() throws Exception {
         logger.info("定时任务已启动---------------- ");
         mailService.sendSimpleMail("812634676@qq.com","test simple mail"," hello this is simple mail");
     }
     @Test
+    @Scheduled(cron = "0 0 8 ? * *"  )
     public void testHtmlMail() throws Exception {
         String content="<html>\n" +
                 "<body>\n" +
@@ -39,7 +40,7 @@ public class MailServiceTest {
                 "<img src=\"https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3\" alt=\"\">"+
                 "</body>\n" +
                 "</html>";
-        mailService.sendHtmlMail("812634676@qq.com","test simple mail",content);
+        mailService.sendHtmlMail("974818429@qq.com","test simple mail",content);
     }
     @Test
     public void sendAttachmentsMail() {

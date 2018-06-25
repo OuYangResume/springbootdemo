@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -109,6 +110,7 @@ public class MemberController {
         List<Member> members=memberService.getMemberList(userName,page,rows);
         int count =memberService.getMemberCount(userName);
         map.put("list",members);
+        map.put("tatal",count);
         return JSON.toJSONString(map);
     }
 }

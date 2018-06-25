@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+
 /**
  * @Author :Administrator
  * @Date:Created by 15:48 on 2018/6/14.
@@ -24,5 +26,7 @@ public class UserMapperTest {
     public void getUserCount(String userName){
         int count=userMapper.getUserCount(userName);
         logger.info(String.valueOf(count));
+
     }
+
 }
