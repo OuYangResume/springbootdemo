@@ -3,6 +3,7 @@ package com.neo.service;
 import com.github.pagehelper.PageInfo;
 import com.neo.entity.User;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface UserService {
@@ -23,7 +24,7 @@ public interface UserService {
 
     void updateUser(User user);
 
-    List<User> selectUserList(String userName,Integer page,Integer rows);
+    HashMap selectUserList(String userName, Integer page, Integer rows);
 
     int getUserCount(String userName);
 }

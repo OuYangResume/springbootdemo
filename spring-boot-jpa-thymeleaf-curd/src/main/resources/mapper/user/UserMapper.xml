@@ -6,6 +6,7 @@
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="age" property="age" jdbcType="INTEGER" />
         <result column="password" property="password" jdbcType="VARCHAR" />
+        <!--<collection property="lngLatList" column="id" ofType="com.neo.entity.LngLat" select=""/>-->
     </resultMap>
     <sql id="Base_Column_List" >
         id, user_name, age, password
@@ -39,7 +40,7 @@
         AND user_name LIKE '%${userName}%'
         </if>
         <if test="pageNo !=null">
-            ORDER BY age limit #{pageNo},#{pageSize}
+            ORDER BY age,id limit #{pageNo},#{pageSize}
         </if>
     </select>
 

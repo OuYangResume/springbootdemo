@@ -1,5 +1,7 @@
 package com.neo.mapper;
 
+import com.neo.entity.LngLat;
+import com.neo.mapper.user.LngLatMapper;
 import com.neo.mapper.user.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author :Administrator
@@ -22,11 +25,19 @@ public class UserMapperTest {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     public UserMapper userMapper;
+    @Autowired
+    public LngLatMapper lngLatMapper;
     @Test
-    public void getUserCount(String userName){
+    public void getUserCount(){
+        String userName="";
         int count=userMapper.getUserCount(userName);
         logger.info(String.valueOf(count));
-
     }
-
+    @Test
+    public void getLngLatList(){
+        Integer userid=11;
+        Integer type=null;
+        List<LngLat> lists=lngLatMapper.getLngLatList(userid,type);
+        logger.info(String.valueOf(lists));
+    }
 }

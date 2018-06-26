@@ -54,12 +54,7 @@ public class HelloController {
 
     @RequestMapping(value = "/selectUserList")
     public String selectUserList(String userName,Integer page,Integer rows){
-        HashMap map=new HashMap();
-        List<User> users=userService.selectUserList(userName,page,rows);
-        int count=userService.getUserCount(userName);
-        map.put("list",users);
-        map.put("total",count);
-        return JSON.toJSONString(map);
+        return JSON.toJSONString(userService.selectUserList(userName,page,rows));
     }
     /**
      * 修改用户信息
