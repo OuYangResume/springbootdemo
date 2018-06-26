@@ -40,4 +40,17 @@ public class UserMapperTest {
         List<LngLat> lists=lngLatMapper.getLngLatList(userid,type);
         logger.info(String.valueOf(lists));
     }
+    @Test
+    public void insertLngLat(){
+        LngLat lngLat =new LngLat();
+        lngLat.setLng("125.2");
+        lngLat.setLat("32.2");
+        lngLat.setAddress("光谷未来城");
+        lngLat.setType(1);
+        lngLat.setUserid(18);
+        int a= lngLatMapper.insertOneLngLat(lngLat);
+        if (a>0){
+            logger.info("asdfasdfasdfas"+String.valueOf(a));
+        }
+    }
 }

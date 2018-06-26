@@ -78,8 +78,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void deleteUser(long id) {
         userMapper.delete(id);
-        Long a =null;
-        lngLatMapper.deleteById(a);
+        lngLatMapper.deleteById(id);
     }
 
     /**

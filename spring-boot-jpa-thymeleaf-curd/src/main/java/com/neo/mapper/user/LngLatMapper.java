@@ -22,4 +22,6 @@ public interface LngLatMapper {
     List<LngLat> getLngLatList(@Param("userid") long userid,@Param("type") Integer type);
 
     void deleteById(@Param("userid") Long userid);
+
+    int insertOneLngLat(LngLat lngLat);
 }

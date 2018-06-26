@@ -25,9 +25,45 @@
     </select>
 
     <delete id="deleteById" parameterType="java.lang.Long">
-        DELETE FROM lnglat WHERE userid =
-        <if test="userid !=null">
-            #{userid}
-        </if>
+        DELETE FROM lnglat WHERE userid = #{userid}
     </delete>
+
+    <insert id="insertOneLngLat" parameterType="com.neo.entity.LngLat" >
+        INSERT INTO lnglat
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="lng != null" >
+                lng,
+            </if>
+            <if test="lat != null" >
+                lat,
+            </if>
+            <if test="userid != null" >
+                userid,
+            </if>
+            <if test="type != null" >
+                type,
+            </if>
+            <if test="address != null" >
+                address,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="lng != null" >
+                #{lng},
+            </if>
+            <if test="lat != null" >
+                #{lat},
+            </if>
+            <if test="userid != null" >
+                #{userid},
+            </if>
+            <if test="type != null" >
+                #{type},
+            </if>
+            <if test="address != null" >
+                #{address},
+            </if>
+        </trim>
+    </insert>
 </mapper>
