@@ -51,4 +51,36 @@
             AND user_name LIKE '%${userName}%'
         </if>
     </select>
+
+    <insert id="insertUser" parameterType="com.neo.entity.User" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="userName != null" >
+                user_name,
+            </if>
+            <if test="age != null" >
+                age,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id},
+            </if>
+            <if test="userName != null" >
+                #{userName},
+            </if>
+            <if test="age != null" >
+                #{age},
+            </if>
+            <if test="password != null" >
+                #{password},
+            </if>
+        </trim>
+    </insert>
 </mapper>

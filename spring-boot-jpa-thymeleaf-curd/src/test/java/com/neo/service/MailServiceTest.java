@@ -29,7 +29,7 @@ public class MailServiceTest {
     @Test
     public void testSimpleMail() throws Exception {
         logger.info("定时任务已启动---------------- ");
-        mailService.sendSimpleMail("812634676@qq.com","test simple mail"," hello this is simple mail");
+        mailService.sendSimpleMail("zhangwenguang123@qq.com","你™真的是个小天才"," 一路顺丰，发财了记得叫上我。告辞");
     }
     @Test
     @Scheduled(cron = "0 0 8 ? * *"  )

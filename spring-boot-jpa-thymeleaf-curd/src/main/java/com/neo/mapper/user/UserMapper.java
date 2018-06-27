@@ -36,4 +36,9 @@ public interface UserMapper {
      * 获取user的总数
      */
     int getUserCount(@Param("userName") String userName);
+
+    /**
+     * 添加用户
+     */
+    void insertUser(User user);
 }

@@ -38,9 +38,21 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id);
     }
 
+    /**
+     * 添加用户
+     * @param user
+     */
     @Override
     public void save(User user) {
-        userRepository.save(user);
+        userMapper.insertUser(user);
+        long userid =user.getId();
+        LngLat lngLat=new LngLat();
+        lngLat.setUserid(userid);
+        lngLat.setAddress("中南名族大学");
+        lngLat.setLng("123.5");
+        lngLat.setLat("32.5");
+        lngLat.setType(1);
+        lngLatMapper.insertOneLngLat(lngLat);
     }
 
     @Override
@@ -119,12 +131,12 @@ public class UserServiceImpl implements UserService {
             for (User user : usersList) {
                 HashMap userMap = new HashMap();
                 long userid = user.getId();
-                Integer type = null;
+                Integer type = 1;
                 List<LngLat> lngLats = lngLatMapper.getLngLatList(userid, type);
                 if (lngLats.size() > 0) {
                     userMap.put("lnglat", lngLats);
                 } else {
-                    userMap.put("lnglat", "该用户没有坐标信息");
+                    userMap.put("lnglat", new ArrayList<>());
                 }
                 userMap.put("age", user.getAge());
                 userMap.put("userName", user.getUserName());

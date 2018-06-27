@@ -48,9 +48,5 @@ public class UserMapperTest {
         lngLat.setAddress("光谷未来城");
         lngLat.setType(1);
         lngLat.setUserid(18);
-        int a= lngLatMapper.insertOneLngLat(lngLat);
-        if (a>0){
-            logger.info("asdfasdfasdfas"+String.valueOf(a));
-        }
     }
 }

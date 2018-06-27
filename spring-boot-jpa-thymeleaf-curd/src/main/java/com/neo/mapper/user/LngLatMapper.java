@@ -23,5 +23,5 @@ public interface LngLatMapper {
 
     void deleteById(@Param("userid") Long userid);
 
-    int insertOneLngLat(LngLat lngLat);
+    void insertOneLngLat(LngLat lngLat);
 }
