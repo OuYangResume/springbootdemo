@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class LngLat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String lng;
     private String lat;
     private long userid;
@@ -28,11 +28,11 @@ public class LngLat {
 
     private String address;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

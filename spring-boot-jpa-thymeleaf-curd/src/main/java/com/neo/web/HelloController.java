@@ -62,8 +62,8 @@ public class HelloController {
      * @param user userObject
      */
     @RequestMapping(value = "/updateUser")
-    public void updateUser(User user) {
-        userService.updateUser(user);
+    public void updateUser(User user,String address,Long lnglatid) {
+        userService.updateUser(user,address,lnglatid);
     }
 
     /**
@@ -82,8 +82,8 @@ public class HelloController {
      * @param user userObject
      */
     @RequestMapping(value = "/addUser")
-    public void createUser(User user) {
-        userService.save(user);
+    public void createUser(User user,String address) {
+        userService.insertUser(user,address);
     }
 
     /**

@@ -14,6 +14,8 @@ public interface UserService {
 
     public void save(User user);
 
+    void insertUser(User user, String address);
+
     public void edit(User user);
 
     public void delete(long id);
@@ -22,7 +24,7 @@ public interface UserService {
 
     void deleteUser(long id);
 
-    void updateUser(User user);
+    void updateUser(User user, String address, Long lnglatid);
 
     HashMap selectUserList(String userName, Integer page, Integer rows);
 
